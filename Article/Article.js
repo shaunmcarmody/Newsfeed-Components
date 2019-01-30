@@ -38,15 +38,12 @@ class Article {
 
 */
 
-// let articles = document.querySelectorAll('.article');
-
-// articles.forEach(el => new Article(el));
-
-jsonArray.forEach((el) => {
-  // let article = document.querySelector('.article-template').cloneNode(true);
+const populateArticle = (data) => {
   article = new Article();
-  article.populate(el.header, el.date, el.article, (article) => {
+  article.populate(data.header, data.date, data.article, (article) => {
     const articles = document.querySelector('.articles');
     articles.appendChild(article);
   });
-})
+}
+
+jsonArray.forEach(el => populateArticle(el));
