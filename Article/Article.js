@@ -2,10 +2,10 @@
     bottom of the page.  Look for the comment "START HERE" */
 
 class Article {
-  constructor(domElement) {
+  constructor() {
     // assign this.domElement to the passed in domElement
-    this.domElement = domElement;
-    // create a reference to the ".expandButton" class. 
+    this.domElement = document.querySelector('.article-template').cloneNode(true);
+    // create a reference to the ".expandButton" class.
     this.expandButton = this.domElement.querySelector('.expandButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = 'Expand';
@@ -17,6 +17,14 @@ class Article {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle('article-open');
     this.expandButton.textContent === 'Expand' ? this.expandButton.textContent = 'Close' : this.expandButton.textContent = 'Expand';
+  }
+
+  populate(header, date, article, cb) {
+    this.domElement.classList.remove('article-template');
+    this.domElement.querySelector('.title').textContent = header;
+    this.domElement.querySelector('.date').textContent = date;
+    this.domElement.querySelector('.content').textContent = article;
+    cb(this.domElement);
   }
 }
 
@@ -34,16 +42,11 @@ class Article {
 
 // articles.forEach(el => new Article(el));
 
-jsonArray.forEach(el => {
-  // let article = document.querySelector('.article-template');
+jsonArray.forEach((el) => {
   // let article = document.querySelector('.article-template').cloneNode(true);
-  // article.classList.remove('article-template');
-  // console.log(article);
-  // article.querySelector('.title').textContent = el.header;
-  // article.querySelector('.date').textContent = el.date;
-  // article.querySelector('.content').textContent = el.article;
-  // article = new Article(article);
-  // const articles = document.querySelector('.articles');
-  // console.log(articles);
-  // console.log(article);
+  article = new Article();
+  article.populate(el.header, el.date, el.article, (article) => {
+    const articles = document.querySelector('.articles');
+    articles.appendChild(article);
+  });
 })
