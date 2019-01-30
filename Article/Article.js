@@ -16,6 +16,7 @@ class Article {
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle('article-open');
+    this.expandButton.textContent === 'Expand' ? this.expandButton.textContent = 'Close' : this.expandButton.textContent = 'Expand';
   }
 }
 
@@ -29,6 +30,20 @@ class Article {
 
 */
 
-let articles = document.querySelectorAll('.article');
+// let articles = document.querySelectorAll('.article');
 
-articles.forEach(el => new Article(el));
+// articles.forEach(el => new Article(el));
+
+jsonArray.forEach(el => {
+  // let article = document.querySelector('.article-template');
+  // let article = document.querySelector('.article-template').cloneNode(true);
+  // article.classList.remove('article-template');
+  // console.log(article);
+  // article.querySelector('.title').textContent = el.header;
+  // article.querySelector('.date').textContent = el.date;
+  // article.querySelector('.content').textContent = el.article;
+  // article = new Article(article);
+  // const articles = document.querySelector('.articles');
+  // console.log(articles);
+  // console.log(article);
+})

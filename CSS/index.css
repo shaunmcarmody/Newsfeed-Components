@@ -105,6 +105,9 @@
 .article-open {
   height: auto;
 }
+.article-template {
+  display: none;
+}
 html,
 body {
   margin: 0;
