@@ -17,6 +17,7 @@ class Article {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle('article-open');
     this.expandButton.textContent === 'Expand' ? this.expandButton.textContent = 'Close' : this.expandButton.textContent = 'Expand';
+
   }
 
   populate(header, date, article, cb) {
@@ -25,6 +26,8 @@ class Article {
     this.domElement.querySelector('.date').textContent = date;
     this.domElement.querySelector('.content').textContent = article;
     cb(this.domElement);
+=======
+
   }
 }
 
